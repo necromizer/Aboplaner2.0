@@ -52,7 +52,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private Button btn_hinzufuegen_date;
     @FXML
-    private Button btn_löschen_date;
+    private Button btn_loeschen_date;
     @FXML
     private ListView<?> list_date;
     @FXML

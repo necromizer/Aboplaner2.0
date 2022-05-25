@@ -1,10 +1,7 @@
 
-import java.text.ParseException;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import model.Person;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,6 +20,7 @@ public class Spieltag {
     public Spieltag(String spieltag) {
         this.spieltag = spieltag;
     }
+   
     
     public void spielerZuteilenEinzel(Person person1, Person person2, Person person3, Person person4 ){
     
@@ -48,7 +46,7 @@ public class Spieltag {
         LocalDate date2 = LocalDate.parse(Enddatum, dtf);
         long daysBetween = Duration.between(date1, date2).toDays();
         System.out.println ("Days: " + daysBetween);
-   }
+   }   
    
    
    
