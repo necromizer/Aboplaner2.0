@@ -54,7 +54,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private Button btn_loeschen_date;
     @FXML
-    private ListView<?> list_date;
+    private ListView<Spieltag> list_date;
     @FXML
     private TextField tf_date;
     @FXML
@@ -124,12 +124,16 @@ public class AuswahlController implements Initializable {
 
     @FXML
     private void btnHinzufuegenDate(ActionEvent event) {
-        System.out.print("");
+        if (tf_date.getText()!=null&&dp_date.getValue()!=null){
+            list_date.getItems().add(new Spieltag(tf_date.getText(),dp_date.getValue()));
+        }
+
     }
 
     @FXML
     private void btnloeschenDate(ActionEvent event) {
-        
+        final int selectedID = list_date.getSelectionModel().getSelectedIndex();
+        list_date.getItems().remove(selectedID);
     }
 
     @FXML
