@@ -32,9 +32,12 @@ public class Spieltag {
     }
    
     
-    public void spielerZuteilenEinzel(Person person1, Person person2, Person person3, Person person4 ){
-    
-    }
+    //public void spielerZuteilenEinzel(Person person1, Person person2){
+      
+    //}
+    //public void spielerZuteilenDoppel(Person person1, Person person2, Person person3, Person person4 ){
+        
+    //}
     
     
     public String getSpieltag() {
@@ -45,7 +48,7 @@ public class Spieltag {
         this.spieltag = spieltag;
     }
    
-    //Diese Klasse gibt aus einem Startdatum, einem Enddatum und einem Spieltag die Anzahl der Spieltage zurück
+    //Diese Klasse gibt aus einem Startdatum, einem Enddatum und dem Wochentag an dem gespielt wird alle Tage an denen gespielt wird zurück
    public void meiendeisnahe(String Startdatum, String Enddatum, int Wochentag)
    {    
         SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
