@@ -24,9 +24,11 @@ import java.util.logging.Logger;
 
 public class Spieltag {
    String spieltag;
+   LocalDate localDate;
 
-    public Spieltag(String spieltag) {
+    public Spieltag(String spieltag, LocalDate date) {
         this.spieltag = spieltag;
+        localDate=date;
     }
    
     
