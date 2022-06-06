@@ -1,18 +1,20 @@
+import java.awt.Component;
 import javafx.scene.control.TableColumn;
+import javax.swing.table.TableCellRenderer;
 
 // @author Sebastian
 
 public class Statistik
 {
-    int anzahlEinsätze;
+    int anzahlEinsaetze;
     int anzahlFeiertage;
     String [] VarianzSpieler;
     int laengstePause;
     
     
 
-    public Statistik(int anzahlEinsätze, int anzahlFeiertage, String[] VarianzSpieler, int laengstePause) {
-        this.anzahlEinsätze = anzahlEinsätze;
+    public Statistik(int anzahlEinsaetze, int anzahlFeiertage, String[] VarianzSpieler, int laengstePause) {
+        this.anzahlEinsaetze = anzahlEinsaetze;
         this.anzahlFeiertage = anzahlFeiertage;
         this.VarianzSpieler = VarianzSpieler;
         this.laengstePause = laengstePause;
@@ -21,15 +23,14 @@ public class Statistik
     Statistik() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
     
     
-    public int getAnzahlEinsätze() {
-        return anzahlEinsätze;
+    public int getAnzahlEinsaetze() {
+        return anzahlEinsaetze;
     }
 
-    public void setAnzahlEinsätze(int anzahlEinsätze) {
-        this.anzahlEinsätze = anzahlEinsätze;
+    public void setAnzahlEinsaetze(int anzahlEinsaetze) {
+        this.anzahlEinsaetze = anzahlEinsaetze;
     }
 
     public int getAnzahlFeiertage() {
@@ -56,25 +57,45 @@ public class Statistik
         this.laengstePause = laengstePause;
     }
     
-        public void einfärben(Statistik [] list)
+        public void einfaerben(Statistik [] list)
     {
-        //färbt beim Spielplan die jeweiligen Kästen ein, damit man leichter erkennen kann, welche Spieler mit wem spielen, so irgendwie
+        //faerbt beim Spielplan die jeweiligen Kaesten ein, damit man leichter erkennen kann, welche Spieler mit wem spielen, so irgendwie
         // = Color.BLACK;
     }
      
         
-        public void einfärbetest()
+        public void einfaerbetest()
     {
-        //färbt beim Spielplan die jeweiligen Kästen ein, damit man leichter erkennen kann, welche Spieler mit wem spielen, so irgendwie
+        //faerbt beim Spielplan die jeweiligen Kästen ein, damit man leichter erkennen kann, welche Spieler mit wem spielen, so irgendwie
         // = Color.BLACK;
         TableColumn tcName_statistik = new TableColumn();
-        tcName_statistik.setText("test123");
+        
+        
+        int player_id = 1;
+        if (player_id == 1)
+        {
+            
+        }
+        
        
     }
+     
+        
+
+
+ 
+
         
         
     public void varianz()
     {
-        //rechnet aus wer mit wem wie oft gespielt hat, so irgendwie
+        //Was soll varianz alles ausrechnen?
+        //Spieler 1 spielte so oft mit spieler 2, mit spieler 3, mit spieler 4
+        //h�chste Spielpause
+        //meiste Tage hintereinander
+        //Eins�tze Feiertage
+        //Eins�tze insgesamt
+        
+        
     }
 }
