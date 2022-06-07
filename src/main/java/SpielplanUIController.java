@@ -50,16 +50,16 @@ public class SpielplanUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         tcName_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("name"));
         tcFt_cFtstatistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("feiertagseinsätze"));
-//        tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("gesamteinsätze"));
-//        tcSv_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("spielervarianz"));
-//        tcLP_statistik.setCellValueFactory(new PropertyValueFactory<>("laengste_pause"));
-//        tv_statistik.setItems(getDataList());
+        tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("gesamteinsätze"));
+        tcSv_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("spielervarianz"));
+        tcLP_statistik.setCellValueFactory(new PropertyValueFactory<>("laengste_pause"));
+        tv_statistik.setItems(getDataList());
     }
-//ObservableList<Daten> getDataList()
-//{
-//    ObservableList<Daten> data = FXCollections.observableArrayList();
-//    data.add(new Daten("Basti",3,14,3,2));
-//    data.add(new Daten("Valenwood",3,14,3,2));
-//    return data;
-//}
+ObservableList<Daten> getDataList()
+{
+    ObservableList<Daten> data = FXCollections.observableArrayList();
+    data.add(new Daten("Basti",3,14,3,2));
+    data.add(new Daten("Valenwood",3,14,3,2));
+    return data;
+}
 }
