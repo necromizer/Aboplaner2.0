@@ -10,18 +10,18 @@
  */
 public class Daten {
     String Name;
-    int anzahl_feiertage;
-    int anzahl_gesamteinsätze;
+    int anzahlfeiertage;
+    int anzahlgesamteinsätze;
     int Spielervarianz;
-    int längste_Pause;
+    int laengstePause;
 
-    public Daten(String Name, int anzahl_feiertage, int anzahl_gesamteinsätze, int Spielervarianz, int längste_Pause) {
+    public Daten(String Name, int anzahlfeiertage, int anzahlgesamteinsätze, int Spielervarianz, int laengstePause) {
         super();
         this.Name = Name;
-        this.anzahl_feiertage = anzahl_feiertage;
-        this.anzahl_gesamteinsätze = anzahl_gesamteinsätze;
+        this.anzahlfeiertage = anzahlfeiertage;
+        this.anzahlgesamteinsätze = anzahlgesamteinsätze;
         this.Spielervarianz = Spielervarianz;
-        this.längste_Pause = längste_Pause;
+        this.laengstePause = laengstePause;
     }
 
     public String getName() {
@@ -32,20 +32,20 @@ public class Daten {
         this.Name = Name;
     }
 
-    public int getAnzahl_feiertage() {
-        return anzahl_feiertage;
+    public int getAnzahlfeiertage() {
+        return anzahlfeiertage;
     }
 
-    public void setAnzahl_feiertage(int anzahl_feiertage) {
-        this.anzahl_feiertage = anzahl_feiertage;
+    public void setAnzahlfeiertage(int anzahlfeiertage) {
+        this.anzahlfeiertage = anzahlfeiertage;
     }
 
-    public int getAnzahl_gesamteinsätze() {
-        return anzahl_gesamteinsätze;
+    public int getAnzahlgesamteinsätze() {
+        return anzahlgesamteinsätze;
     }
 
-    public void setAnzahl_gesamteinsätze(int anzahl_gesamteinsätze) {
-        this.anzahl_gesamteinsätze = anzahl_gesamteinsätze;
+    public void setAnzahlgesamteinsätze(int anzahlgesamteinsätze) {
+        this.anzahlgesamteinsätze = anzahlgesamteinsätze;
     }
 
     public int getSpielervarianz() {
@@ -56,12 +56,13 @@ public class Daten {
         this.Spielervarianz = Spielervarianz;
     }
 
-    public int getLängste_Pause() {
-        return längste_Pause;
+    public int getLaengstePause() {
+        return laengstePause;
     }
 
-    public void setLängste_Pause(int längste_Pause) {
-        this.längste_Pause = längste_Pause;
+    public void setLaengstePause(int laengstePause) {
+        this.laengstePause = laengstePause;
     }
+
     
 }

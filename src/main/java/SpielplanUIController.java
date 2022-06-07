@@ -35,7 +35,7 @@ public class SpielplanUIController implements Initializable {
     private TableColumn<Daten, String> tcName_statistik;
     //name, selbsterklärend
     @FXML
-    private TableColumn<Daten, String> tcFt_cFtstatistik;
+    private TableColumn<Daten, String> tcFt_statistik;
     //Anzahl der Einsätze an Feiertage, selbsterklärend
     @FXML
     private TableColumn<Daten, String> tcAE_Statistik;
@@ -57,18 +57,23 @@ public class SpielplanUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tcName_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("name"));
-        tcFt_cFtstatistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("feiertagseinsätze"));
-        tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("gesamteinsätze"));
+        tcFt_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlfeiertage"));
+        tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlgesamteinsätze"));
         tcSv_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("spielervarianz"));
-        tcLP_statistik.setCellValueFactory(new PropertyValueFactory<>("laengste_pause"));
+        tcLP_statistik.setCellValueFactory(new PropertyValueFactory<>("laengstePause"));
         tv_statistik.setItems(getDataList());
     }
 ObservableList<Daten> getDataList()
 {
     ObservableList<Daten> data = FXCollections.observableArrayList();
-    data.add(new Daten("Basti",3,14,3,2));
-    data.add(new Daten("Valenwood",3,14,3,2));
+    data.add(new Daten("Basti",3,14,0,0));
+    data.add(new Daten("Valenwood",3,14,0,0));
     return data;
+}
+
+public void Addrow(String name, int anzahlfeiertage, int anzahlgesamteinsätze )
+{
+    
 }
 
 
@@ -84,6 +89,6 @@ public void btnZurueck(ActionEvent actionEvent) throws IOException {
     }
 
     public void btnSpeichern(ActionEvent actionEvent) {
-    
+        
     }
 }

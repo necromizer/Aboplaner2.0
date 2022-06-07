@@ -24,15 +24,18 @@ public class Main extends Application {
 
         FileWriter fw = new FileWriter("NutzungsbedingungenVorhanden.txt");
         Stage stage = new Stage();
-        //if (s==null)
-        if(true)
+        
+        if (s==null)
+        //if(true) 
+        //zum vorzeigen der Nutzungsbeingungen
         {
             fw.write("false");
             fw.close();
             
-            //Parent root = FXMLLoader.load(getClass().getResource("/Nutzungsbedingungen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Nutzungsbedingungen.fxml"));
             
-            Parent root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
+            
+            
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

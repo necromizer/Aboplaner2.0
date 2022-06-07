@@ -53,7 +53,8 @@ public class LoadingController implements Initializable {
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Loading");
-        
+        stage=(Stage)btn_abbruch.getScene().getWindow();
+        stage.close();
     }
     
 }
