@@ -4,19 +4,22 @@
  * and open the template in the editor.
  */
 
-import java.awt.Color;
-import java.awt.Component;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javax.swing.JTable;
-
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -24,6 +27,7 @@ import javax.swing.JTable;
  * @author schei, sebas
  */
 public class SpielplanUIController implements Initializable {
+
 
     @FXML
     public TableView<Daten> tv_statistik;
@@ -42,6 +46,10 @@ public class SpielplanUIController implements Initializable {
     @FXML
     private TableColumn<Daten, String> tcLP_statistik;
     //Längste Pause, umsetzung fraghaft
+    @FXML
+    private Button btn_speichern;
+    @FXML
+    private Button btn_zurueck;
 
     /**
      * Initializes the controller class.
@@ -62,4 +70,20 @@ ObservableList<Daten> getDataList()
     data.add(new Daten("Valenwood",3,14,3,2));
     return data;
 }
+
+
+
+public void btnZurueck(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/Auswahl.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Auswahl");
+        stage =(Stage) btn_speichern.getScene().getWindow();
+    }
+
+    public void btnSpeichern(ActionEvent actionEvent) {
+    
+    }
 }

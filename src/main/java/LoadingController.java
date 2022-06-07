@@ -33,12 +33,26 @@ public class LoadingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
     }    
 
     @FXML
     private void abbruch(ActionEvent event) throws IOException {
+        /**
       Stage s=(Stage)btn_abbruch.getScene().getWindow();
       s.close();
+         */
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Loading");
         
     }
     

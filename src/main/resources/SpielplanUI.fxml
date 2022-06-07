@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SpielplanUIController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SpielplanUIController">
    <children>
-      <TableView fx:id="tv_statistik" layoutX="69.0" layoutY="74.0" prefHeight="810.0" prefWidth="847.0">
+      <TableView fx:id="tv_statistik" layoutX="64.0" layoutY="72.0" prefHeight="810.0" prefWidth="847.0">
         <columns>
-          <TableColumn fx:id="tcName_statistik" prefWidth="150.39995574951172" text="Name" />
-          <TableColumn fx:id="tcFt_statistik" minWidth="0.0" prefWidth="145.5999755859375" text="Anzahl Feiertagseinsätze" />
-            <TableColumn fx:id="tcAE_Statistik" minWidth="5.60003662109375" prefWidth="174.40005493164062" text="Anzahl Gesamteinsätze" />
-            <TableColumn fx:id="tcSv_statistik" minWidth="0.0" prefWidth="168.800048828125" text="Spielervarianz" />
-            <TableColumn fx:id="tcLP_statistik" minWidth="0.0" prefWidth="203.199951171875" text="längste Pause" />
+          <TableColumn fx:id="tcName_statistik" prefWidth="150.39995574951172" text="C1" maxWidth="1503.9995574951172"
+                       minWidth="30.0"/>
+          <TableColumn fx:id="tcFt_statistik" minWidth="30.0" prefWidth="145.5999755859375" text="C2"
+                       maxWidth="1455.999755859375"/>
+            <TableColumn fx:id="tcAE_Statistik" minWidth="30.0" prefWidth="174.40005493164062" text="Column X"
+                         maxWidth="1744.0005493164062"/>
+            <TableColumn fx:id="tcSv_statistik" minWidth="30.0" prefWidth="168.800048828125" text="Column X"
+                         maxWidth="1688.00048828125"/>
+            <TableColumn fx:id="tcLP_statistik" minWidth="30.0" prefWidth="203.199951171875" text="Column X"
+                         maxWidth="2031.99951171875"/>
         </columns>
       </TableView>
+      <TableView fx:id="tv_datum" layoutX="981.0" layoutY="74.0" prefHeight="939.0" prefWidth="863.0">
+        <columns>
+          <TableColumn fx:id="tc_Datum" prefWidth="169.0" text="C1" maxWidth="1690.0" minWidth="30.0"/>
+          <TableColumn fx:id="tc_p1" minWidth="30.0" prefWidth="134.0" text="C2" maxWidth="1340.0"/>
+            <TableColumn fx:id="tc_p2" prefWidth="135.0" text="Column X" maxWidth="1350.0" minWidth="30.0"/>
+            <TableColumn fx:id="tc_p3" minWidth="30.0" prefWidth="199.0" text="Column X" maxWidth="1990.0"/>
+            <TableColumn fx:id="tc_p4" prefWidth="225.0" text="Column X" maxWidth="2250.0" minWidth="30.0"/>
+        </columns>
+      </TableView>
+      <Button fx:id="btn_zurueck" layoutX="167.0" layoutY="958.0" mnemonicParsing="false" onAction="#btnZurueck" prefHeight="28.0" prefWidth="148.0" text="zurück">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_speichern" layoutX="406.0" layoutY="958.0" mnemonicParsing="false" onAction="#btnSpeichern" prefHeight="57.0" prefWidth="164.0" text="Speichern">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
