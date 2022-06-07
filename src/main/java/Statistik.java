@@ -1,5 +1,7 @@
 import java.awt.Component;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.table.TableCellRenderer;
 
 // @author Sebastian
@@ -62,39 +64,17 @@ public class Statistik
         //faerbt beim Spielplan die jeweiligen Kaesten ein, damit man leichter erkennen kann, welche Spieler mit wem spielen, so irgendwie
         // = Color.BLACK;
     }
-     
-        
-        public void einfaerbetest()
-    {
-        //faerbt beim Spielplan die jeweiligen KÃ¤sten ein, damit man leichter erkennen kann, welche Spieler mit wem spielen, so irgendwie
-        // = Color.BLACK;
-        TableColumn tcName_statistik = new TableColumn();
-        
-        
-        int player_id = 1;
-        if (player_id == 1)
-        {
-            
-        }
-        
-       
-    }
-     
-        
-
-
- 
 
         
-        
-    public void varianz()
+        //1. Einsätze, 2. Einsätze Feiertage
+    public void varianz(int[] spielerArray, int[] spielerArrayFeiertage )
     {
         //Was soll varianz alles ausrechnen?
         //Spieler 1 spielte so oft mit spieler 2, mit spieler 3, mit spieler 4
         //höchste Spielpause
         //meiste Tage hintereinander
-        //Einsätze Feiertage
-        //Einsätze insgesamt
+        //Einsätze Feiertage --
+        //Einsätze insgesamt --
         
         
     }
