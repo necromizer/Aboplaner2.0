@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 
+import java.awt.Color;
+import java.awt.Component;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JTable;
+
 
 /**
  * FXML Controller class
@@ -19,11 +24,11 @@ import javafx.scene.control.TableView;
 public class SpielplanUIController implements Initializable {
 
     @FXML
-    private TableView<?> tv_statistik;
+    public TableView<?> tv_statistik;
     @FXML
     private TableColumn<?, ?> tcName_statistik;
     @FXML
-    private TableColumn<?, ?> tcFt_statistik;
+    private TableColumn<?, ?> tcFt_cFtstatistik;
     @FXML
     private TableColumn<?, ?> tcAE_Statistik;
     @FXML
@@ -37,6 +42,13 @@ public class SpielplanUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
+   
+  
+   
+
+
+   
 }
