@@ -9,10 +9,10 @@
       <TableView fx:id="tv_statistik" layoutX="69.0" layoutY="74.0" prefHeight="810.0" prefWidth="847.0">
         <columns>
           <TableColumn fx:id="tcName_statistik" prefWidth="150.39995574951172" text="Name" />
-          <TableColumn fx:id="tcFt_statistik" minWidth="0.0" prefWidth="145.5999755859375" text="C2" />
-            <TableColumn fx:id="tcAE_Statistik" minWidth="5.60003662109375" prefWidth="174.40005493164062" text="Column X" />
-            <TableColumn fx:id="tcSv_statistik" minWidth="0.0" prefWidth="168.800048828125" text="Column X" />
-            <TableColumn fx:id="tcLP_statistik" minWidth="0.0" prefWidth="203.199951171875" text="Column X" />
+          <TableColumn fx:id="tcFt_statistik" minWidth="0.0" prefWidth="145.5999755859375" text="Anzahl Feiertagseinsätze" />
+            <TableColumn fx:id="tcAE_Statistik" minWidth="5.60003662109375" prefWidth="174.40005493164062" text="Anzahl Gesamteinsätze" />
+            <TableColumn fx:id="tcSv_statistik" minWidth="0.0" prefWidth="168.800048828125" text="Spielervarianz" />
+            <TableColumn fx:id="tcLP_statistik" minWidth="0.0" prefWidth="203.199951171875" text="längste Pause" />
         </columns>
       </TableView>
    </children>
