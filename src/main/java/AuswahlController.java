@@ -107,6 +107,10 @@ public class AuswahlController implements Initializable {
        
     }    
 
+    public String getEverything(){
+
+        return "";
+    }
     @FXML
     private void btnHinzufuegen(ActionEvent event) {
         //fügt Text von dem Textfield tf_name in die Liste list_players ein, wenn das Textfield nicht leer ist.

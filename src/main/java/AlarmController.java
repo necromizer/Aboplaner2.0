@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -44,5 +44,21 @@ public class AlarmController implements Initializable {
     private void close(ActionEvent event) {
         exit();
     }
-    
+
+    public void btnSpeichern(ActionEvent actionEvent) {
+        InputStream p = null;
+        try {
+            p = new FileInputStream("NutzungsbedingungenVorhanden.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p));
+            String s = reader.readLine();
+
+            FileWriter fw = new FileWriter("NutzungsbedingungenVorhanden.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }
