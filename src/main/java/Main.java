@@ -30,6 +30,7 @@ public class Main extends Application {
             fw.close();
 
             Parent root = FXMLLoader.load(getClass().getResource("/Nutzungsbedingungen.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -39,10 +40,12 @@ public class Main extends Application {
         else{
             if (s.equals("false")){
                 Parent root = FXMLLoader.load(getClass().getResource("/Nutzungsbedingungen.fxml"));
+                //Parent root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
                 stage.setTitle("Nutzungsbedingungen");
+                
             }
             else if (s.equals("true")){
                 Parent root = FXMLLoader.load(getClass().getResource("/Auswahl.fxml"));
