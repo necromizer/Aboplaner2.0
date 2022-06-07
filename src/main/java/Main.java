@@ -24,23 +24,25 @@ public class Main extends Application {
 
         FileWriter fw = new FileWriter("NutzungsbedingungenVorhanden.txt");
         Stage stage = new Stage();
-        if (s==null)
+        //if (s==null)
+        if(true)
         {
             fw.write("false");
             fw.close();
-
-            Parent root = FXMLLoader.load(getClass().getResource("/Nutzungsbedingungen.fxml"));
-            //Parent root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
+            
+            //Parent root = FXMLLoader.load(getClass().getResource("/Nutzungsbedingungen.fxml"));
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
             stage.setTitle("Nutzungsbedingungen");
-
+            
         }
         else{
             if (s.equals("false")){
                 Parent root = FXMLLoader.load(getClass().getResource("/Nutzungsbedingungen.fxml"));
-                //Parent root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
+                
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -49,6 +51,7 @@ public class Main extends Application {
             }
             else if (s.equals("true")){
                 Parent root = FXMLLoader.load(getClass().getResource("/Auswahl.fxml"));
+                
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
