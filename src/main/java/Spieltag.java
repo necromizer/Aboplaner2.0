@@ -103,7 +103,15 @@ public class Spieltag {
             
             
     }
-   }   
+
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+    public String getnameSpieltag(){
+        return spieltag;
+    }
+}
    
    
    
