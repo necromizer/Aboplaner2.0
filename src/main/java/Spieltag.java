@@ -30,8 +30,16 @@ public class Spieltag {
         this.spieltag = spieltag;
         localDate=date;
     }
-   
-    
+    public Spieltag(){
+
+    };
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+    public String getspieltag(){
+        return spieltag;
+    }
     //public void spielerZuteilenEinzel(Person person1, Person person2){
       
     //}
