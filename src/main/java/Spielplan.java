@@ -1,4 +1,4 @@
-// @author Valentin
+// @author Valentin, sebas
 
 public class Spielplan
 {
@@ -7,10 +7,19 @@ public class Spielplan
     String spielweise;
     int anzahlSpieler;
     int anzahlFeiertage;
-    
+    int[] spielerArrayFeiertage;
+    int[] spielerArray;
     public Spielplan()
     {
         
+    }
+
+    public int[] getSpielerArrayFeiertage() {
+        return spielerArrayFeiertage;
+    }
+
+    public int[] getSpielerArray() {
+        return spielerArray;
     }
     
     public void algorithmus()
@@ -37,7 +46,7 @@ public class Spielplan
         
 	int restEinsätze = gesamtEinsätze - einsätzeProSpieler * anzahlSpieler;
 	
-	int[] spielerArray = new int[anzahlSpieler];
+	spielerArray = new int[anzahlSpieler];
 	
 	for (int i = 0; i < spielerArray.length; i++)
 	{
@@ -56,7 +65,7 @@ public class Spielplan
 	
 	int restEinsätzeFeiertage = gesamtEinsätzeFeiertage - einsätzeFeiertageProSpieler * anzahlSpieler;
         
-	int[] spielerArrayFeiertage = new int[anzahlSpieler];
+	spielerArrayFeiertage = new int[anzahlSpieler];
         
 	for (int i = 0; i < spielerArrayFeiertage.length; i++)
 	{

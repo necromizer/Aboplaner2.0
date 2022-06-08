@@ -6,6 +6,8 @@
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,31 +52,91 @@ public class SpielplanUIController implements Initializable {
     private Button btn_speichern;
     @FXML
     private Button btn_zurueck;
+    public ArrayList spielerarray = new ArrayList();
+    public int spieleranzahl = 0;
+    Date startdatum = null;
+    Date enddatum = null;
+    public ArrayList datearray = new ArrayList();
+    int wochentag;
+    int einsatztermine;
+    String spielweise;
+    int feiertage;
+    int[] einsatzArrayFeiertage;
+    int[] einsatzArray;
+
+    public void setSpielerarray(ArrayList spielerarray) {
+        this.spielerarray = spielerarray;
+    }
+
+    public void setSpieleranzahl(int spieleranzahl) {
+        this.spieleranzahl = spieleranzahl;
+    }
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //getSpieltagData();
+        //getSpielplanData();
         tcName_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("name"));
         tcFt_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlfeiertage"));
         tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlgesamteinsätze"));
         tcSv_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("spielervarianz"));
         tcLP_statistik.setCellValueFactory(new PropertyValueFactory<>("laengstePause"));
+        
         tv_statistik.setItems(getDataList());
     }
 ObservableList<Daten> getDataList()
 {
     ObservableList<Daten> data = FXCollections.observableArrayList();
-    data.add(new Daten("Basti",3,14,0,0));
-    data.add(new Daten("Valenwood",3,14,0,0));
+    data.add(new Daten("Sebastian",0,3,0,0));
+    data.add(new Daten("Valentin",0,3,0,0));
+    data.add(new Daten("Julian",0,2,0,0));
+    //data.add(new Daten("Valenwood",3,14,0,0));
+    
+    for (int i = 0; i < spieleranzahl; i++)
+    {
+    
+    data.add(new Daten((String) spielerarray.get(i),einsatzArray[i],einsatzArrayFeiertage[i],0,0));
+    
+    }
     return data;
 }
-
-public void Addrow(String name, int anzahlfeiertage, int anzahlgesamteinsätze )
+public void getAlgorithmData()
 {
-    
+    Spielplan spielplan = new Spielplan();
+    //spielplan.aufteilen(einsatztermine, String spielweise, int anzahlSpieler, int anzahlFeiertage);
 }
+public void getInputData(ArrayList spielerarray, int spieleranzahl, Date startdatum, Date enddatum, int wochentag, String spielweise, int feiertage)
+{
+    this.enddatum = enddatum;
+    this.spieleranzahl = spieleranzahl;
+    this.startdatum = startdatum;
+    this.spielerarray = spielerarray;
+    this.wochentag = wochentag;
+    this.spielweise = spielweise;
+    this.feiertage = feiertage;
+    //getSpieltagData();
+    //getSpielplanData();
+        
+}
+//public void getSpieltagData()
+//    {
+//        Spieltag spieltag = new Spieltag();
+//        spieltag.arrayausrechnen(startdatum, enddatum, wochentag);
+//        datearray = spieltag.getDateArray();
+//        einsatztermine = spieltag.getTageausgabe();
+//        
+//    }
+public void getSpielplanData()
+    {
+        Spielplan spielplan = new Spielplan();
+        spielplan.aufteilen(einsatztermine, spielweise, spieleranzahl, feiertage);
+        einsatzArray = spielplan.getSpielerArray();
+        einsatzArrayFeiertage = spielplan.getSpielerArrayFeiertage();
+    }
 
 
 
