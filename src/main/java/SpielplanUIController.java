@@ -122,14 +122,14 @@ public void getInputData(ArrayList spielerarray, int spieleranzahl, Date startda
     //getSpielplanData();
         
 }
-//public void getSpieltagData()
-//    {
-//        Spieltag spieltag = new Spieltag();
-//        spieltag.arrayausrechnen(startdatum, enddatum, wochentag);
-//        datearray = spieltag.getDateArray();
-//        einsatztermine = spieltag.getTageausgabe();
-//        
-//    }
+public void getSpieltagData()
+    {
+        Spieltag spieltag = new Spieltag();
+        spieltag.arrayausrechnen(startdatum, enddatum, wochentag);
+        datearray = spieltag.getDateArray();
+        einsatztermine = spieltag.getTageausgabe();
+        
+    }
 public void getSpielplanData()
     {
         Spielplan spielplan = new Spielplan();
@@ -148,6 +148,7 @@ public void btnZurueck(ActionEvent actionEvent) throws IOException {
         stage.show();
         stage.setTitle("Auswahl");
         stage =(Stage) btn_speichern.getScene().getWindow();
+        stage.close();
     }
 
     public void btnSpeichern(ActionEvent actionEvent) {
