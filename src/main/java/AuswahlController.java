@@ -8,7 +8,10 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import static javafx.application.Platform.exit;
 import javafx.collections.ObservableList;
@@ -16,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -31,7 +35,7 @@ import javafx.scene.Scene;
 /**
  * FXML Controller class
  *
- * @author schei
+ * @author schei, sebas
  */
 public class AuswahlController implements Initializable {
 
@@ -75,12 +79,47 @@ public class AuswahlController implements Initializable {
     private RadioButton rb_sonntag;
       @FXML
     private RadioButton rb_freitag;
+      @FXML
+    private DatePicker dp_startdate;
+      @FXML
+    private DatePicker dp_enddate;
     
     private ArrayList<RadioButton> rlist = new ArrayList();
     private ObservableList list;
     private ObservableList listd;
     private String rb_checked; //beinhaltet text des ausgewählten Radiobuttons
+    public ArrayList spielerarray = new ArrayList();
+    public int spieleranzahl = 0;
+    public int wochentag;
+    LocalDate startdatum;
+    LocalDate enddatum;
+    Date enddatumdate;
+    Date startdatumdate;
+    String spielweise = "Einzel";
+    int feiertage = 0;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    ZoneId defaultZoneId = ZoneId.systemDefault();
     
+    public void dp_startaction()
+    {
+        startdatum = dp_startdate.getValue();
+        startdatumdate = Date.from(startdatum.atStartOfDay(defaultZoneId).toInstant());
+    }
+    public void dp_endaction()
+    {
+        enddatum = dp_enddate.getValue();
+        enddatumdate = Date.from(enddatum.atStartOfDay(defaultZoneId).toInstant());
+    }
+    
+    public ArrayList getSpielerarray() {
+        return spielerarray;
+    }
+
+    public int getSpieleranzahl() {
+        return spieleranzahl;
+    }
     
 
     /**
@@ -114,9 +153,21 @@ public class AuswahlController implements Initializable {
     @FXML
     private void btnHinzufuegen(ActionEvent event) {
         //fügt Text von dem Textfield tf_name in die Liste list_players ein, wenn das Textfield nicht leer ist.
+        // s/ F�gt Spieler zu einem Spielerarray hinzu, z�hlt Spieleranzahl 1 hoch
+        
+            
+            spielerarray.add(tf_name.getText());
+            spieleranzahl ++;
+            
+            
+            
         if(tf_name.getText()!=null){
+            
             list_players.getItems().add(tf_name.getText());
+            
+            
         }
+        
     }
 
     @FXML
@@ -128,6 +179,7 @@ public class AuswahlController implements Initializable {
 
     @FXML
     private void btnHinzufuegenDate(ActionEvent event) {
+        feiertage++;
         if (tf_date.getText()!=null&&dp_date.getValue()!=null){
             list_date.getItems().add(new Spieltag(tf_date.getText(),dp_date.getValue()));
         }
@@ -154,15 +206,21 @@ public class AuswahlController implements Initializable {
 
     @FXML
     private void btnErstellung(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Loading.fxml"));
-        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SpielplanUI.fxml"));
+        root = loader.load();
+        spielweise = cb_spielweise.getValue();
+        SpielplanUIController spuic = new SpielplanUIController();
+        spuic.getInputData(spielerarray, spieleranzahl, startdatumdate, enddatumdate, wochentag, spielweise, feiertage);
+        
+        
+        //Parent root = FXMLLoader.load(getClass().getResource("SpielplanUI.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        //Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
-        stage.setTitle("Loading...");
-        stage = (Stage)btn_hinzufuegen.getScene().getWindow();
-        stage.close();
+        stage.setTitle("SpielplanUI");
     }
 
     @FXML
@@ -175,7 +233,7 @@ public class AuswahlController implements Initializable {
     private void check_montag(ActionEvent event) {
         //es wird überprüft, ob außer dem Radiobutton rb_montag noch ein anderer Radiobutton selektiert ist. Wenn dies der Fall ist, werden alle außer rb_montag nicht selektiert.
         boolean check;
-        
+        wochentag = 2;
         for(int i =0; i<=rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(0).getId())){
                  rb_sonntag.setSelected(true);
@@ -188,6 +246,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private void check_dienstag(ActionEvent event) {
          boolean check;
+         wochentag = 3;
         for(int i =0; i<=rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(1).getId())){
                  rb_sonntag.setSelected(true);
@@ -200,6 +259,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private void check_mittwoch(ActionEvent event) {
          boolean check;
+         wochentag = 4;
         for(int i =0; i<=rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(2).getId())){
                  rb_sonntag.setSelected(true);
@@ -212,6 +272,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private void check_donnerstag(ActionEvent event) {
          boolean check;
+         wochentag = 5;
          for(int i =0; i<=rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(3).getId())){
                  rb_sonntag.setSelected(true);
@@ -224,6 +285,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private void check_freitag(ActionEvent event) {
          boolean check;
+         wochentag = 6;
          for(int i =0; i<=rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(4).getId())){
                  rb_sonntag.setSelected(true);
@@ -236,6 +298,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private void check_samstag(ActionEvent event) {
          boolean check;
+         wochentag = 7;
          for(int i =0; i<=rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(5).getId())){
                  rb_sonntag.setSelected(true);
@@ -248,6 +311,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private void check_sonntag(ActionEvent event) {
          boolean check;
+         wochentag = 1;
          for(int i =0; i<=rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(6).getId())){
                  rb_sonntag.setSelected(true);
