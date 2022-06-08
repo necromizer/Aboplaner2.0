@@ -51,6 +51,7 @@ public class AuswahlController implements Initializable {
     private TextField tf_name;
     @FXML
     private ListView<String> list_players;
+    //liste mit spielern
     @FXML
     private Button btn_hinzufuegen1;
     @FXML
@@ -182,7 +183,10 @@ public class AuswahlController implements Initializable {
         feiertage++;
         if (tf_date.getText()!=null&&dp_date.getValue()!=null){
             list_date.getItems().add(new Spieltag(tf_date.getText(),dp_date.getValue()));
+            list_date.setCellFactory(param -> new DatumCell());
+            //linkt die liste mit der cellfactory
         }
+
 
     }
 
