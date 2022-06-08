@@ -72,6 +72,7 @@ public class SpielplanUIController implements Initializable {
         stage.show();
         stage.setTitle("Auswahl");
         stage =(Stage) btn_speichern.getScene().getWindow();
+        stage.close();
     }
 
     public void btnSpeichern(ActionEvent actionEvent) {

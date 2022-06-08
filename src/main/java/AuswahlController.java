@@ -161,6 +161,8 @@ public class AuswahlController implements Initializable {
         stage.show();
         stage.setResizable(false);
         stage.setTitle("Loading...");
+        stage = (Stage)btn_hinzufuegen.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
