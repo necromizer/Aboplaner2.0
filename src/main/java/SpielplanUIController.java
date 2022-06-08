@@ -7,7 +7,8 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,40 +18,34 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author schei
+ * @author schei, sebas
  */
 public class SpielplanUIController implements Initializable {
 
 
     @FXML
-    private TableView<?> tv_statistik;
+    public TableView<Daten> tv_statistik;
     @FXML
-    private TableColumn<?, ?> tcName_statistik;
+    private TableColumn<Daten, String> tcName_statistik;
+    //name, selbsterklärend
     @FXML
-    private TableColumn<?, ?> tcFt_statistik;
+    private TableColumn<Daten, String> tcFt_cFtstatistik;
+    //Anzahl der Einsätze an Feiertage, selbsterklärend
     @FXML
-    private TableColumn<?, ?> tcAE_Statistik;
+    private TableColumn<Daten, String> tcAE_Statistik;
+    //Anzahl der gesamten Einsätze, selbsterklärend
     @FXML
-    private TableColumn<?, ?> tcSv_statistik;
+    private TableColumn<Daten, String> tcSv_statistik;
+    //Spielervarianz, kan plan
     @FXML
-    private TableColumn<?, ?> tcLP_statistik;
-    @FXML
-    private TableColumn tc_p1;
-    @FXML
-    private TableView tv_datum;
-    @FXML
-    private TableColumn tc_p3;
-    @FXML
-    private TableColumn tc_p2;
-    @FXML
-    private TableColumn tc_p4;
-    @FXML
-    private TableColumn tc_Datum;
+    private TableColumn<Daten, String> tcLP_statistik;
+    //Längste Pause, umsetzung fraghaft
     @FXML
     private Button btn_speichern;
     @FXML
@@ -61,10 +56,24 @@ public class SpielplanUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tcName_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("name"));
+        tcFt_cFtstatistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("feiertagseinsätze"));
+        tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("gesamteinsätze"));
+        tcSv_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("spielervarianz"));
+        tcLP_statistik.setCellValueFactory(new PropertyValueFactory<>("laengste_pause"));
+        tv_statistik.setItems(getDataList());
     }
+ObservableList<Daten> getDataList()
+{
+    ObservableList<Daten> data = FXCollections.observableArrayList();
+    data.add(new Daten("Basti",3,14,3,2));
+    data.add(new Daten("Valenwood",3,14,3,2));
+    return data;
+}
 
-    public void btnZurueck(ActionEvent actionEvent) throws IOException {
+
+
+public void btnZurueck(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/Auswahl.fxml"));
         Scene scene = new Scene(root);
@@ -76,5 +85,6 @@ public class SpielplanUIController implements Initializable {
     }
 
     public void btnSpeichern(ActionEvent actionEvent) {
+    
     }
 }
