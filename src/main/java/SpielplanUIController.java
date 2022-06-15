@@ -133,9 +133,13 @@ public void getSpieltagData()
 public void getSpielplanData()
     {
         Spielplan spielplan = new Spielplan();
-        spielplan.aufteilen(einsatztermine, spielweise, spieleranzahl, feiertage);
-        einsatzArray = spielplan.getSpielerArray();
-        einsatzArrayFeiertage = spielplan.getSpielerArrayFeiertage();
+        try {
+            spielplan.aufteilen(einsatztermine, spielweise, spieleranzahl, feiertage);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //einsatzArray = spielplan.getSpielerArray();
+       // einsatzArrayFeiertage = spielplan.getSpielerArrayFeiertage();
     }
 
 

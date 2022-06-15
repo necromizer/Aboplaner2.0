@@ -239,6 +239,8 @@ public class AuswahlController implements Initializable {
 
     @FXML
     private void btnSpeichern(ActionEvent event) {
+        //Alle Werte der KOmponenten einlesen und in einem String speichern; jedes Element soll mit einem "," getrennt sein.
+        //Der String wird in einer CSV-Datei gespeichert
 
         
     }

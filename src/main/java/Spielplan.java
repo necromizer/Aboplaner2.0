@@ -8,6 +8,7 @@ public class Spielplan
     String spielweise;
     int anzahlSpieler;
     int anzahlFeiertage;
+
     
     public Spielplan()
     {
@@ -559,4 +560,6 @@ public class Spielplan
         
         // Alle möglichen Kombinationen berechnen und zuweisen
     }
+
+
 }
