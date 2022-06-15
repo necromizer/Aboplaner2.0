@@ -220,6 +220,7 @@ public class AuswahlController implements Initializable {
         stage.setTitle("Speichern?");
     }
 
+    //l‰dt das Fenster Loading und schlieﬂt Auswahl
     @FXML
     private void btnErstellung(ActionEvent event) throws IOException {
 
@@ -232,6 +233,8 @@ public class AuswahlController implements Initializable {
         stage.show();
         stage.setResizable(false);
         stage.setTitle("Loading");
+        stage = (Stage)btn_hinzufuegen.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

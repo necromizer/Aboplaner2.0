@@ -46,23 +46,15 @@ public class LoadingController implements Initializable {
 
     @FXML
     private void abbruch(ActionEvent event) throws IOException {
-        /**
+
       Stage s=(Stage)btn_abbruch.getScene().getWindow();
       s.close();
-         */
-        Stage stage = new Stage();
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/SpielplanUI.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Loading");
-        stage=(Stage)btn_abbruch.getScene().getWindow();
-        stage.close();
+      Parent root = FXMLLoader.load(getClass().getResource("Auswahl.fxml"));
+      s.setScene(new Scene(root));
+      s.show();
+      s.setTitle("Auswahl");
+
+
     }
     @FXML
     void clicked(MouseEvent event) throws IOException {
