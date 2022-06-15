@@ -103,16 +103,7 @@ public class AuswahlController implements Initializable {
     private Parent root;
     ZoneId defaultZoneId = ZoneId.systemDefault();
     
-    public void dp_startaction()
-    {
-        startdatum = dp_startdate.getValue();
-        startdatumdate = Date.from(startdatum.atStartOfDay(defaultZoneId).toInstant());
-    }
-    public void dp_endaction()
-    {
-        enddatum = dp_enddate.getValue();
-        enddatumdate = Date.from(enddatum.atStartOfDay(defaultZoneId).toInstant());
-    }
+
     
     public ArrayList getSpielerarray() {
         return spielerarray;
@@ -121,6 +112,12 @@ public class AuswahlController implements Initializable {
     public int getSpieleranzahl() {
         return spieleranzahl;
     }
+    public String getSpielweise() { return spielweise; }
+    public Date getStartdatumdate(){return startdatumdate;}
+    public Date getEnddatumdate(){return enddatumdate;}
+    public int getWochentag(){return wochentag;}
+    public int getFeiertage(){return feiertage;}
+    public Button getBtn_hinzufuegen(){return btn_hinzufuegen;}
     
 
     /**
@@ -145,8 +142,20 @@ public class AuswahlController implements Initializable {
        cb_spielweise.getItems().add("Doppel");
        cb_spielweise.setValue("Einzel");
        
-    }    
+    }
 
+
+
+    public void dp_startaction()
+    {
+        startdatum = dp_startdate.getValue();
+        startdatumdate = Date.from(startdatum.atStartOfDay(defaultZoneId).toInstant());
+    }
+    public void dp_endaction()
+    {
+        enddatum = dp_enddate.getValue();
+        enddatumdate = Date.from(enddatum.atStartOfDay(defaultZoneId).toInstant());
+    }
     public String getEverything(){
 
         return "";
@@ -170,6 +179,9 @@ public class AuswahlController implements Initializable {
         }
         
     }
+
+
+
 
     @FXML
     private void btnLoeschen(ActionEvent event) {
@@ -210,21 +222,16 @@ public class AuswahlController implements Initializable {
 
     @FXML
     private void btnErstellung(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SpielplanUI.fxml"));
-        root = loader.load();
-        spielweise = cb_spielweise.getValue();
-        SpielplanUIController spuic = new SpielplanUIController();
-        spuic.getInputData(spielerarray, spieleranzahl, startdatumdate, enddatumdate, wochentag, spielweise, feiertage);
+
         
-        
-        //Parent root = FXMLLoader.load(getClass().getResource("SpielplanUI.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Loading.fxml"));
+       // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
-        stage.setTitle("SpielplanUI");
+        stage.setTitle("Loading");
     }
 
     @FXML

@@ -22,14 +22,15 @@ public class Main extends Application {
         BufferedReader reader = new BufferedReader(new InputStreamReader(p));
         String s = reader.readLine();
 
-        FileWriter fw = new FileWriter("NutzungsbedingungenVorhanden.txt");
+
         Stage stage = new Stage();
         
         //if (s==null)
         //für den normalen Gebrauch
-        if(true) 
+        if(s==null)
         //zum vorzeigen der Nutzungsbeingungen
         {
+            FileWriter fw = new FileWriter("NutzungsbedingungenVorhanden.txt");
             fw.write("false");
             fw.close();
             
@@ -41,6 +42,7 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.show();
             stage.setTitle("Nutzungsbedingungen");
+            stage.setResizable(false);
             
         }
         else{

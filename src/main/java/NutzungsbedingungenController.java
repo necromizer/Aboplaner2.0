@@ -38,6 +38,7 @@ public class NutzungsbedingungenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
     }
 
     @FXML
@@ -48,6 +49,7 @@ public class NutzungsbedingungenController implements Initializable {
         } else {
             btn_weiter.setDisable(true);
         }
+
     }
 
     @FXML
@@ -68,6 +70,7 @@ public class NutzungsbedingungenController implements Initializable {
             s.setScene(scene);
             s.show();
             s.setTitle("Auswahl");
+
         } catch (Exception e) {
             System.out.println(e.getCause());
         }
