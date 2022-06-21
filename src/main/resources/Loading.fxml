@@ -8,7 +8,7 @@
 <AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="393.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoadingController">
 
    <children>
-      <ImageView fitHeight="208.0" fitWidth="313.0" layoutX="45.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="iv" fitHeight="208.0" fitWidth="313.0" layoutX="45.0" layoutY="63.0" onMouseClicked="#clicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@animiertes-tennis-bild-0041.gif" />
          </image>

@@ -42,6 +42,9 @@ public class Spieltag {
     }
     public Spieltag() {
     }
+
+    //getter methoden
+
    
     
     //public void spielerZuteilenEinzel(Person person1, Person person2){
@@ -103,7 +106,15 @@ public class Spieltag {
             
             
     }
-   }   
+
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+    public String getnameSpieltag(){
+        return spieltag;
+    }
+}
    
    
    
