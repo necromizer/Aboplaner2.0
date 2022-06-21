@@ -84,7 +84,7 @@ public class SpielplanUIController implements Initializable {
         tcFt_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlfeiertage"));
         tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlgesamteinsätze"));
         tcSv_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("spielervarianz"));
-        tcLP_statistik.setCellValueFactory(new PropertyValueFactory<>("laengstePause"));
+        tcLP_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("laengstePause"));
         
         tv_statistik.setItems(getDataList());
     }
