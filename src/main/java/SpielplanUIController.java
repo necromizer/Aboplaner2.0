@@ -78,8 +78,7 @@ public class SpielplanUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //getSpieltagData();
-        //getSpielplanData();
+        
         tcName_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("name"));
         tcFt_statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlfeiertage"));
         tcAE_Statistik.setCellValueFactory(new PropertyValueFactory<Daten, String>("anzahlgesamteinsätze"));
@@ -94,8 +93,8 @@ ObservableList<Daten> getDataList()
     data.add(new Daten("Sebastian",0,3,0,0));
     data.add(new Daten("Valentin",0,3,0,0));
     data.add(new Daten("Julian",0,2,0,0));
-    //data.add(new Daten("Valenwood",3,14,0,0));
-    
+    //data.add(new Daten("Valetinian",3,14,0,0));
+     
     for (int i = 0; i < spieleranzahl; i++)
     {
     
@@ -119,7 +118,9 @@ public void getInputData(ArrayList spielerarray, int spieleranzahl, Date startda
     this.spielweise = spielweise;
     this.feiertage = feiertage;
     //getSpieltagData();
+    //Gibt Error aus
     //getSpielplanData();
+    //Gibt Error aus
         
 }
 public void getSpieltagData()
