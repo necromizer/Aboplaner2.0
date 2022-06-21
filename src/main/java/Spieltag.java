@@ -45,7 +45,6 @@ public class Spieltag {
 
     //getter methoden
 
-   
     
     //public void spielerZuteilenEinzel(Person person1, Person person2){
       
