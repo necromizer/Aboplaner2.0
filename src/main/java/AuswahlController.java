@@ -6,14 +6,15 @@
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
+
 import static javafx.application.Platform.exit;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import sun.rmi.runtime.Log;
 
 
 /**
@@ -144,7 +146,55 @@ public class AuswahlController implements Initializable {
        cb_spielweise.getItems().add("Einzel");
        cb_spielweise.getItems().add("Doppel");
        cb_spielweise.setValue("Einzel");
-       
+        setKomponenten();
+
+
+    }
+
+    private void setKomponenten() {
+
+        try {
+            InputStream p = new FileInputStream("save.csv");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p));
+            String s = reader.readLine();
+            if (s != null) {
+                String[] sk = s.split(";"); //Alle elemente im String werden getrennt in einem array gespeichert
+                for (int i = 0; i < rlist.size(); i++) {
+                    if (sk[2].equals(rlist.get(i).getText())) { //prüft, welcher radiobuttontext mit der des Strings, identisch ist und selektiert diesen.
+                        rlist.get(i).setSelected(true);
+                    }
+                }
+                if (sk[3].equals("null")) {
+                    //nichst wird ausgewählt
+                } else {
+                    dp_startdate.setValue(LocalDate.parse(sk[3]));//datum wird im datepicker gesetzt
+                }
+                if (sk[4].equals("null")) {
+                    //nichts wird ausgewaehlt
+                } else {
+                    dp_enddate.setValue(LocalDate.parse(sk[4])); //datum wird im datepicker gesetzt
+                }
+                for (int i = 0; i < Integer.parseInt(sk[0]); i++) {
+                    list_players.getItems().add(sk[i+5]); // mithilfe von sk[0] (anzahl der Namen in Liste rlist) werden dieselbe anzahl an namen vom array wieder in die liste rlist gespeichert
+                }
+                int i = Integer.parseInt(sk[0]);
+                if (sk[6+i].equals("null")){
+                    //nichts wird ausgewaehlt
+                }
+                else{
+                    cb_spielweise.setValue(sk[6+i]); //text wird in combobox gesetzt
+                }
+                for (int j = 0; j<Integer.parseInt(sk[1]);i+=2){
+                    list_date.getItems().add(new Spieltag(sk[i+7],LocalDate.parse(sk[i+8]))); // mithilfe von sk[1] (anzahl der Daten in Liste listdate) werden dieselbe anzahl an Daten vom array wieder in die liste listdate gespeichert
+                }
+            }
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -159,10 +209,7 @@ public class AuswahlController implements Initializable {
         enddatum = dp_enddate.getValue();
         enddatumdate = Date.from(enddatum.atStartOfDay(defaultZoneId).toInstant());
     }
-    public String getEverything(){
 
-        return "";
-    }
     @FXML
     private void btnHinzufuegen(ActionEvent event) {
         //fÃ¼gt Text von dem Textfield tf_name in die Liste list_players ein, wenn das Textfield nicht leer ist.
@@ -189,7 +236,7 @@ public class AuswahlController implements Initializable {
 
     @FXML
     private void btnLoeschen(ActionEvent event) {
-        //Selektiertes Element aus der Liste list_players wird aus der Liste gelÃ¶scht.
+        //Selektiertes Element aus der Liste list_players wird  gelÃ¶scht.
         final int selectedID = list_players.getSelectionModel().getSelectedIndex();
         list_players.getItems().remove(selectedID);
     }
@@ -211,6 +258,7 @@ public class AuswahlController implements Initializable {
 
     @FXML
     private void btnloeschenDate(ActionEvent event) {
+        //löscht selektiertes element aus der listview gelöscht.
         final int selectedID = list_date.getSelectionModel().getSelectedIndex();
         list_date.getItems().remove(selectedID);
     }
@@ -243,6 +291,7 @@ public class AuswahlController implements Initializable {
         stage = (Stage)btn_hinzufuegen.getScene().getWindow();
         stage.close();
     }
+    // speichert den text des gerade ausgewählten radiobuttons in einen string
     private String getradiobtns(){
         String radiobtn = "";
         for (int i = 0; i< rlist.size();i++ ){
@@ -254,9 +303,7 @@ public class AuswahlController implements Initializable {
 
         return radiobtn;
     }
-
-    @FXML
-    private void btnSpeichern(ActionEvent event) throws IOException {
+    public void speichern() throws IOException {
         //Alle Werte der KOmponenten einlesen und in einem String speichern; jedes Element soll mit einem ";" getrennt sein.
         //Der String wird unverschlüsselt in einer CSV-Datei gespeichert
         String save = "";
@@ -270,13 +317,18 @@ public class AuswahlController implements Initializable {
         }
         save += cb_spielweise.getValue() + ";";
         for (int i = 0;i<savedates.size();i++){
-            save+= savedates.get(i).getnameSpieltag() +";" + savedates.get(i).getLocalDate().toString()+";";
+            save+= savedates.get(i).getnameSpieltag() +";" + savedates.get(i).getLocalDate().toString();
         }
 
         FileWriter fw = new FileWriter(" save.csv");
         fw.write(save);
         fw.close();
-        
+
+    }
+
+    @FXML
+    private void btnSpeichern(ActionEvent event) throws IOException {
+       speichern();
     }
 
     @FXML
