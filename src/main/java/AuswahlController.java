@@ -229,14 +229,14 @@ public class AuswahlController implements Initializable {
     private void btnErstellung(ActionEvent event) throws IOException {
 
         
-        Parent root = FXMLLoader.load(getClass().getResource("Loading.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("SpielplanUI.fxml"));
        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
-        stage.setTitle("Loading");
+        stage.setTitle("SpielplanUI");
         stage = (Stage)btn_hinzufuegen.getScene().getWindow();
         stage.close();
     }
