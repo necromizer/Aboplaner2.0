@@ -6,6 +6,7 @@
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -103,7 +104,7 @@ public class AuswahlController implements Initializable {
     private Parent root;
     ZoneId defaultZoneId = ZoneId.systemDefault();
     private ArrayList<String> saveplayers = new ArrayList();
-    private ArrayList<String> savedates = new ArrayList<>();
+    private ArrayList<Spieltag> savedates = new ArrayList<>();
     
 
     
@@ -198,7 +199,9 @@ public class AuswahlController implements Initializable {
         feiertage++;
 
         if (tf_date.getText()!=null&&dp_date.getValue()!=null){
+            savedates.add(new Spieltag(tf_date.getText(),dp_date.getValue()));
             list_date.getItems().add(new Spieltag(tf_date.getText(),dp_date.getValue()));
+
             list_date.setCellFactory(param -> new DatumCell());
             //linkt die liste mit der cellfactory
         }
@@ -242,10 +245,10 @@ public class AuswahlController implements Initializable {
     }
     private String getradiobtns(){
         String radiobtn = "";
-        for (int i = 0; i<= rlist.size();i++ ){
+        for (int i = 0; i< rlist.size();i++ ){
             if (rlist.get(i).isSelected())
             {
-                radiobtn = rlist.get(i).toString();
+                radiobtn = rlist.get(i).getText();
             }
         }
 
@@ -253,23 +256,26 @@ public class AuswahlController implements Initializable {
     }
 
     @FXML
-    private void btnSpeichern(ActionEvent event) {
-        //Alle Werte der KOmponenten einlesen und in einem String speichern; jedes Element soll mit einem "," getrennt sein.
-        //Der String wird in einer CSV-Datei gespeichert
+    private void btnSpeichern(ActionEvent event) throws IOException {
+        //Alle Werte der KOmponenten einlesen und in einem String speichern; jedes Element soll mit einem ";" getrennt sein.
+        //Der String wird unverschl�sselt in einer CSV-Datei gespeichert
         String save = "";
         save += saveplayers.size() +";";
         save += savedates.size() + ";";
         save += getradiobtns()+";";
         save += dp_startdate.getValue()+ ";";
         save += dp_enddate.getValue()+";";
-        for (int i =0;i<=saveplayers.size();i++){
+        for (int i =0;i<saveplayers.size();i++){
             save += saveplayers.get(i) + ";";
         }
         save += cb_spielweise.getValue() + ";";
+        for (int i = 0;i<savedates.size();i++){
+            save+= savedates.get(i).getnameSpieltag() +";" + savedates.get(i).getLocalDate().toString()+";";
+        }
 
-
-
-
+        FileWriter fw = new FileWriter(" save.csv");
+        fw.write(save);
+        fw.close();
         
     }
 
@@ -278,7 +284,7 @@ public class AuswahlController implements Initializable {
         //es wird überprüft, ob außer dem Radiobutton rb_montag noch ein anderer Radiobutton selektiert ist. Wenn dies der Fall ist, werden alle außer rb_montag nicht selektiert.
         boolean check;
         wochentag = 2;
-        for(int i =0; i<=rlist.size();i++){
+        for(int i =0; i<rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(0).getId())){
                  rb_sonntag.setSelected(true);
                  rb_checked = rlist.get(i).getText();
@@ -291,7 +297,7 @@ public class AuswahlController implements Initializable {
     private void check_dienstag(ActionEvent event) {
          boolean check;
          wochentag = 3;
-        for(int i =0; i<=rlist.size();i++){
+        for(int i =0; i<rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(1).getId())){
                  rb_sonntag.setSelected(true);
                    rb_checked = rlist.get(i).getText();
@@ -304,7 +310,7 @@ public class AuswahlController implements Initializable {
     private void check_mittwoch(ActionEvent event) {
          boolean check;
          wochentag = 4;
-        for(int i =0; i<=rlist.size();i++){
+        for(int i =0; i<rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(2).getId())){
                  rb_sonntag.setSelected(true);
                    rb_checked = rlist.get(i).getText();
@@ -317,7 +323,7 @@ public class AuswahlController implements Initializable {
     private void check_donnerstag(ActionEvent event) {
          boolean check;
          wochentag = 5;
-         for(int i =0; i<=rlist.size();i++){
+         for(int i =0; i<rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(3).getId())){
                  rb_sonntag.setSelected(true);
                    rb_checked = rlist.get(i).getText();
@@ -330,7 +336,7 @@ public class AuswahlController implements Initializable {
     private void check_freitag(ActionEvent event) {
          boolean check;
          wochentag = 6;
-         for(int i =0; i<=rlist.size();i++){
+         for(int i =0; i<rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(4).getId())){
                  rb_sonntag.setSelected(true);
                    rb_checked = rlist.get(i).getText();
@@ -343,7 +349,7 @@ public class AuswahlController implements Initializable {
     private void check_samstag(ActionEvent event) {
          boolean check;
          wochentag = 7;
-         for(int i =0; i<=rlist.size();i++){
+         for(int i =0; i<rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(5).getId())){
                  rb_sonntag.setSelected(true);
                    rb_checked = rlist.get(i).getText();
@@ -356,7 +362,7 @@ public class AuswahlController implements Initializable {
     private void check_sonntag(ActionEvent event) {
          boolean check;
          wochentag = 1;
-         for(int i =0; i<=rlist.size();i++){
+         for(int i =0; i<rlist.size();i++){
              if(rlist.get(i).getId().equals(rlist.get(6).getId())){
                  rb_sonntag.setSelected(true);
                    rb_checked = rlist.get(i).getText();
