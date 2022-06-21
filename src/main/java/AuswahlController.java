@@ -102,6 +102,8 @@ public class AuswahlController implements Initializable {
     private Scene scene;
     private Parent root;
     ZoneId defaultZoneId = ZoneId.systemDefault();
+    private ArrayList<String> saveplayers = new ArrayList();
+    private ArrayList<String> savedates = new ArrayList<>();
     
 
     
@@ -168,6 +170,7 @@ public class AuswahlController implements Initializable {
             
             spielerarray.add(tf_name.getText());
             spieleranzahl ++;
+            saveplayers.add(tf_name.getText());
             
             
             
@@ -193,6 +196,7 @@ public class AuswahlController implements Initializable {
     @FXML
     private void btnHinzufuegenDate(ActionEvent event) {
         feiertage++;
+
         if (tf_date.getText()!=null&&dp_date.getValue()!=null){
             list_date.getItems().add(new Spieltag(tf_date.getText(),dp_date.getValue()));
             list_date.setCellFactory(param -> new DatumCell());
@@ -236,11 +240,35 @@ public class AuswahlController implements Initializable {
         stage = (Stage)btn_hinzufuegen.getScene().getWindow();
         stage.close();
     }
+    private String getradiobtns(){
+        String radiobtn = "";
+        for (int i = 0; i<= rlist.size();i++ ){
+            if (rlist.get(i).isSelected())
+            {
+                radiobtn = rlist.get(i).toString();
+            }
+        }
+
+        return radiobtn;
+    }
 
     @FXML
     private void btnSpeichern(ActionEvent event) {
         //Alle Werte der KOmponenten einlesen und in einem String speichern; jedes Element soll mit einem "," getrennt sein.
         //Der String wird in einer CSV-Datei gespeichert
+        String save = "";
+        save += saveplayers.size() +";";
+        save += savedates.size() + ";";
+        save += getradiobtns()+";";
+        save += dp_startdate.getValue()+ ";";
+        save += dp_enddate.getValue()+";";
+        for (int i =0;i<=saveplayers.size();i++){
+            save += saveplayers.get(i) + ";";
+        }
+        save += cb_spielweise.getValue() + ";";
+
+
+
 
         
     }
