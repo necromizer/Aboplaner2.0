@@ -25,10 +25,9 @@ public class Main extends Application {
 
         Stage stage = new Stage();
         
-        //if (s==null)
-        //für den normalen Gebrauch
+
         if(s==null)
-        //zum vorzeigen der Nutzungsbeingungen
+
         {
             FileWriter fw = new FileWriter("NutzungsbedingungenVorhanden.txt");
             fw.write("false");
