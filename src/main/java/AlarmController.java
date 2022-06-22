@@ -45,19 +45,9 @@ public class AlarmController implements Initializable {
         exit();
     }
 
-    public void btnSpeichern(ActionEvent actionEvent) {
-        InputStream p = null;
-        try {
-            p = new FileInputStream("NutzungsbedingungenVorhanden.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(p));
-            String s = reader.readLine();
-
-            FileWriter fw = new FileWriter("NutzungsbedingungenVorhanden.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void btnSpeichern(ActionEvent actionEvent) throws IOException { // wirft noch fehlermeldung, muss noch behoben werden [21.6.2022]
+       AuswahlController ac = new AuswahlController();
+       ac.speichern();
 
 
     }
